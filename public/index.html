@@ -3,11 +3,38 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      ul {
+        list-style-type : none;
+        margin : 0;
+        padding :0;
+        width : 200 px;
+        background-color: grey;
+      }
+        li { float: left}
+          .Navigation{
+            display :flex;
+            justify-content:space-around;
+
+          }
+      li a {
+        display :block;
+        color: black;
+        padding : 8 px 16 px;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
+
       <h1>Welcome to my page</h1>
       <p>This is a paragraph.</p>
-      <a href="feed.html">read the feed</a>
-      <a href="post.html">post something</a>
+      <ul>
+        <div class = "Navigation" >
+      <li><a href="feed.html"> read the feed</a></li>
+      <li><a href="post.html"> post something</a></li>
+    </div>
+    </ul>
   </body>
 </html>
