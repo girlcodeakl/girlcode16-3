@@ -18,3 +18,26 @@ h2 {
   border-radius: 5px;
   text-align: center;
 }
+
+ul {
+  list-style-type : none;
+  margin : 0;
+  padding :0;
+  width : 200 px;
+  background-color: yellow;
+}
+
+li { float: left}
+
+.Navigation {
+      display :flex;
+      justify-content:space-around;
+
+}
+
+li a {
+  display :block;
+  color: black;
+  padding : 8 px 16 px;
+  text-decoration: none;
+}
