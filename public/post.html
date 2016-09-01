@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <link rel="stylesheet" href="css/style.css">
-
-  </head>
-  <body>
-    <ul>
-      <div class = "Navigation" >
-    <li><a href="index.html"> index</a></li>
-    <li><a href="feed.html"> read the feed</a></li>
-  </div>
+<head>
+  <meta charset='utf-8'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+  <ul>
+    <div class = "Navigation" >
+      <li><a href="index.html"> index</a></li>
+      <li><a href="feed.html"> read the feed</a></li>
+    </div>
   </ul>
-      <form method="post" action="/ideas">
-          <input type="text" name="idea" value="idea goes here">
-          <input type="submit" value="Submit">
-      </form>
-  </body>
+  <form class= "ideasubmitform" method="post" action="/ideas">
+    <input class= "ideaInput" type="text" name="idea" value="idea goes here">
+    <input type="submit" value="Submit">
+    <div class="note"></div>
+  </form>
+  <script>
+  var myCoolFunction = function (e) {
+    e.preventDefault();
+    var data = {};
+    data.idea = $(".ideaInput").val();
+    $.post( "/ideas" , data );
+    $(".note").text("Thanks! Your idea was submitted");
+  }
+  $(".ideasubmitform").on("submit", myCoolFunction);
+  </script>
+</body>
 </html>
