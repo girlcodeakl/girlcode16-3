@@ -5,8 +5,19 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Idea Feed</title>
     <link rel="stylesheet" href="css/style.css">
+
+    
   </head>
+
   <body>
+    <ul>
+
+    <div class = "Navigation" >
+      <li><a href="index.html"> index </a></li>
+      <li><a href="post.html"> post something </a></li>
+    </div>
+
+  </ul>
     <h1 class="title">Idea Feed</h1>
     <div class="idea-box">
     </div>
@@ -14,7 +25,7 @@
 //Hello! This is the start of the JavaScript.
 
 var displayIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea + '</h2>');
+  var ideaElement = $('<h2>' + idea.text + '</h2>');
   $(".idea-box").append(ideaElement);
 
 }
