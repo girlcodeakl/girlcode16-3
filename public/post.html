@@ -17,9 +17,9 @@
     var data = {};
     data.idea = $(".ideaInput").val();
     $.post( "/ideas" , data );
+    $(".note").text("Thanks! Your idea was submitted");
   }
   $(".ideasubmitform").on("submit", myCoolFunction);
-  $(".note").text("Thanks! Your idea was submitted");
   </script>
 </body>
 </html>
