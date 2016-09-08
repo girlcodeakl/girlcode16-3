@@ -32,7 +32,8 @@ var saveNewIdea = function (request, response) {
   var idea = {};
   idea.text = request.body.idea;
   idea.image = request.body.image;
-  idea.time = time;
+  idea.time = new Date();
+    console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
 }
