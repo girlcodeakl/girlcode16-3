@@ -14,18 +14,23 @@
   </ul>
   <form class= "ideasubmitform" method="post" action="/ideas">
     <input class= "ideaInput" type="text" name="idea" value="idea goes here">
+    <input class= "authorInput" type="text" name="idea" value="name goes here">
     <input type="submit" value="Submit">
     <div class="note"></div>
   </form>
   <script>
   var myCoolFunction = function (e) {
     e.preventDefault();
-    var data = {};
-    data.idea = $(".ideaInput").val();
-    $.post( "/ideas" , data );
+    var data1 = {};
+    var data2 = {};
+    data1.idea = $(".ideaInput").val();
+    data2.author = $(".authorInput").val();
+    $.post( "/ideas" , data1 );
+    $.post( "/author" , data2 );
     $(".note").text("Thanks! Your idea was submitted");
   }
   $(".ideasubmitform").on("submit", myCoolFunction);
+  //idea.author=request.body.author;
   </script>
 </body>
 </html>
