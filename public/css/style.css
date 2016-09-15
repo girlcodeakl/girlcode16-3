@@ -52,3 +52,7 @@ li a {
   color: maroon;
   font-size: 20px;
 }
+
+.postId {
+    display: none;
+}

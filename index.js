@@ -20,6 +20,7 @@ console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
 idea.text = "Two cats who solve crimes in Dunedin";
 idea.image = "http://www.catbehaviorassociates.com/wp-content/uploads/2012/03/catsweb2-016.jpg";
 idea.time = time;
+idea.id = 15001;
 posts.push(idea);
 
 //let a client GET the list of ideas
@@ -42,6 +43,7 @@ var saveNewIdea = function (request, response) {
   else {
     idea.image = request.body.image;
   }
+  idea.id = Math.round(Math.random() * 100000);
   console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
@@ -49,6 +51,17 @@ var saveNewIdea = function (request, response) {
   dbPosts.insert(idea);
 }
 app.post('/ideas', saveNewIdea);
+
+app.get('/idea', function (req, res) {
+   var searchId = req.query.id;
+   console.log("Searching for post " + searchId);
+   var results = posts.filter(function (post) { return post.id == searchId; });
+   if (results.length > 0) {
+     res.send(results[0]);
+   } else {
+   res.send(null);
+   }
+});
 
 var mongodb = require('mongodb');
 var uri = 'mongodb://girlcodecat:camel@ds019746.mlab.com:19746/newdeployment';
