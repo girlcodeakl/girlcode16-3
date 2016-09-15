@@ -1,19 +1,63 @@
 
 <!DOCTYPE html>
 <html>
+
   <head>
+    <meta charset='utf-8'>
     <link rel="stylesheet" href="css/style.css">
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
   </head>
-  <body>
 
-      <h1>Welcome to my page</h1>
-      <p>This is a paragraph.</p>
-      <ul>
-        <div class = "Navigation" >
-      <li><a href="feed.html"> read the feed</a></li>
-      <li><a href="post.html"> post something</a></li>
-    </div>
-    </ul>
-  </body>
-</html>
+  <body>
+    <form class= "ideasubmitform" method="post" action="/ideas">
+      <input class= "ideaInput" type="text" name="idea" placeholder="idea goes here">
+      <input class= "imageInput" type="text" name="image" placeholder="image goes here">
+      <input class= "authorInput" type="text" name="idea" placeholder="name goes here">
+      <input type="submit" value="Submit">
+      <div class="note"></div>
+    </form>
+    <script>
+    var myCoolFunction = function (e) {
+      e.preventDefault();
+      var data = {};
+
+      data.idea = $(".ideaInput").val();
+      data.author = $(".authorInput").val();
+      data.image = $(".imageInput").val();
+      $.post( "/ideas" , data );
+
+      $(".note").text("Thanks! Your idea was submitted");
+    }
+    $(".ideasubmitform").on("submit", myCoolFunction);
+    //idea.author=request.body.author;
+</script>
+    <h1 class="title">Idea Feed</h1>
+    <div class="idea-box"> </div>
+      <div class="author-box"> </div>
+
+    <script>  
+//Hello! This is the start of the JavaScript.
+var displayIdea = function(idea) {
+  var ideaElement = $('<h2>' + idea.text + " " + "<img src= " + idea.image + ">" + " " + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "</h2>");
+  $(".idea-box").append(ideaElement);
+  ideaElement.delegate(".likeButton", "click", function() {
+        alert("You liked this post: " + idea.text + "!");
+    });
+}
+
+
+var createFeed = function(data) {
+  data.forEach(displayIdea);
+}
+
+
+
+$.get("/ideas", createFeed);
+
+
+//This is the end of the JavaScript.
+    </script>
+
+    </body>
+    </html>
