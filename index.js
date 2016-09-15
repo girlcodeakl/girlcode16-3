@@ -16,8 +16,9 @@ app.use(bodyParser.json())
 var posts = [];
 var idea = {};
 var time = new Date();
-  console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
 idea.text = "Two cats who solve crimes in Dunedin";
+idea.image = "http://www.catbehaviorassociates.com/wp-content/uploads/2012/03/catsweb2-016.jpg";
 idea.time = time;
 posts.push(idea);
 
@@ -32,13 +33,18 @@ var saveNewIdea = function (request, response) {
   console.log(request.body.idea); //write it on the command prompt so we can see
   var idea = {};
   idea.text = request.body.idea;
-  idea.image = request.body.image;
   idea.time = new Date();
-    console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+  if (request.body.image === "" ) {
+    idea.image = "https://trevorslee.files.wordpress.com/2015/03/montoya-meme.jpg"
+  }
+  else {
+    idea.image = request.body.image;
+  }
+  console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
   var dbPosts = database.collection('posts');
-dbPosts.insert(idea);
+  dbPosts.insert(idea);
 }
 app.post('/ideas', saveNewIdea);
 
