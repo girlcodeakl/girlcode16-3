@@ -31,8 +31,10 @@ app.get('/ideas', sendIdeasList);
 //let a client POST new ideas
 var saveNewIdea = function (request, response) {
   console.log(request.body.idea); //write it on the command prompt so we can see
+  console.log(request.body.author);
   var idea = {};
   idea.text = request.body.idea;
+  idea.author = request.body.author;
   idea.time = new Date();
   if (request.body.image === "" ) {
     idea.image = "https://trevorslee.files.wordpress.com/2015/03/montoya-meme.jpg"
