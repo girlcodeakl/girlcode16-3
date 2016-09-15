@@ -21,6 +21,7 @@ h2 {
 
 .time {
   color: #82eaa3;
+  font-size: 20px;
 }
 
 
@@ -45,4 +46,9 @@ li a {
   color: black;
   padding : 8 px 16 px;
   text-decoration: none;
+}
+.displayauthor{
+  display: block;
+  color: maroon;
+  font-size: 20px;
 }

@@ -21,12 +21,12 @@
   <script>
   var myCoolFunction = function (e) {
     e.preventDefault();
-    var data1 = {};
-    var data2 = {};
-    data1.idea = $(".ideaInput").val();
-    data2.author = $(".authorInput").val();
-    $.post( "/ideas" , data1 );
-    $.post( "/author" , data2 );
+    var data = {};
+
+    data.idea = $(".ideaInput").val();
+    data.author = $(".authorInput").val();
+    $.post( "/ideas" , data );
+
     $(".note").text("Thanks! Your idea was submitted");
   }
   $(".ideasubmitform").on("submit", myCoolFunction);
