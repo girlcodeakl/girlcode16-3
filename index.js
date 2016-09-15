@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 var posts = [];
 var idea = {};
 var time = new Date();
-  console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
 idea.text = "Two cats who solve crimes in Dunedin";
 idea.image = "http://www.catbehaviorassociates.com/wp-content/uploads/2012/03/catsweb2-016.jpg";
 idea.time = time;
@@ -40,11 +40,11 @@ var saveNewIdea = function (request, response) {
   else {
     idea.image = request.body.image;
   }
-    console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+  console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
   var dbPosts = database.collection('posts');
-dbPosts.insert(idea);
+  dbPosts.insert(idea);
 }
 app.post('/ideas', saveNewIdea);
 
