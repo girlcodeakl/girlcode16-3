@@ -7,7 +7,7 @@ body {
 }
 h1 {
   text-align: center;
-  color: #FFB03B;
+  color: #723147;
 }
 
 h2 {
@@ -55,4 +55,28 @@ li a {
 
 .postId {
     display: none;
+}
+
+form {
+  text-align: center;
+  padding: 10px;
+}
+
+input[type=submit] {
+   color: #723147;
+   border: 1px solid black;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 5px;
+   margin-top: 15px;
+   margin-bottom: 20px;
+   background-color: white;
+}
+
+input[type=text] {
+    color: #723147;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
 }
