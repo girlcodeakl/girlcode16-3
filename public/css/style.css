@@ -1,26 +1,32 @@
 body {
   color: black;
+  background-color: #31152B;
 }
 .idea-box {
-  background-color: #FFF0A5;
+  background-color: #31152B;
   padding: 20px;
 }
 h1 {
   text-align: center;
-  color: #723147;
+  color: #CC4452;
+  font-size: 50px;
+  font-family: 'Raleway', sans-serif;
 }
 
 h2 {
   color: #468966;
   margin: 10px;
   padding: 10px;
-  border: 2px solid #FFB03B;
+  border: 2px solid #723147;
   border-radius: 5px;
   text-align: center;
+  font-family: 'Raleway', sans-serif;
+
 }
 
 .time {
-  color: #82eaa3;
+  display: block;
+  color: #E6B098;
   font-size: 20px;
 }
 
@@ -30,7 +36,7 @@ ul {
   margin : 0;
   padding :0;
   width : 200 px;
-  background-color: yellow;
+  background-color: #31152B;
 }
 
 li { float: left}
@@ -49,14 +55,13 @@ li a {
 }
 .displayauthor{
   display: block;
-  color: maroon;
+  color: #E6B098;
   font-size: 20px;
 }
 
 .postId {
     display: none;
 }
-
 form {
   text-align: center;
   padding: 10px;
@@ -79,4 +84,22 @@ input[type=text] {
     background-color: white;
     border: 1px solid black;
     padding: 5px;
+}
+.text {
+  display: block;
+  color: #F9E4AD;
+}
+
+.likeButton {
+  font-size: 20px;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #CC4452;
+  border: 2px;
+  background-color: #723147;
+  border-radius: 5px;
+  text-decoration: none;
 }

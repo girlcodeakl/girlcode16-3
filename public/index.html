@@ -4,6 +4,7 @@
 
 <head>
   <meta charset='utf-8'>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
@@ -40,7 +41,7 @@
   <script>
   //Hello! This is the start of the JavaScript.
   var displayIdea = function(idea) {
-    var ideaElement = $('<h2>' + idea.text + " " + "<img src= " + idea.image + ">" + " " + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
+    var ideaElement = $('<h2>' + " " + "<div class = 'image'>" + "<img src= " + idea.image + ">" + "</div>" + " " + "<div class='text'>" + idea.text + "</div>" + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
     $(".idea-box").append(ideaElement);
     ideaElement.delegate(".likeButton", "click", function() {
       alert("You liked this post: " + idea.text + "!");
