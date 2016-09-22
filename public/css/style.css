@@ -103,3 +103,8 @@ input[type=text] {
   border-radius: 5px;
   text-decoration: none;
 }
+
+.note {
+  color: #CC4452;
+  font-family: 'Raleway', sans-serif;
+}
