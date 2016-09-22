@@ -4,16 +4,18 @@
 
 <head>
   <meta charset='utf-8'>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
 </head>
 
 <body>
+  <h1 class="title">Idea Feed</h1>
   <form class= "ideasubmitform" method="post" action="/ideas">
-    <input class= "ideaInput" type="text" name="idea" placeholder="idea goes here">
-    <input class= "imageInput" type="text" name="image" placeholder="image goes here">
-    <input class= "authorInput" type="text" name="idea" placeholder="name goes here">
+    <input class= "ideaInput" type="text" name="idea" placeholder="Idea goes here">
+    <input class= "imageInput" type="text" name="image" placeholder="Image goes here">
+    <input class= "authorInput" type="text" name="idea" placeholder="Name goes here">
     <input type="submit" value="Submit">
     <div class="note"></div>
   </form>
@@ -33,14 +35,13 @@
   //idea.author=request.body.author;
   </script>
 
-  <h1 class="title">Idea Feed</h1>
   <div class="idea-box"> </div>
   <div class="author-box"> </div>
 
   <script>
   //Hello! This is the start of the JavaScript.
   var displayIdea = function(idea) {
-    var ideaElement = $('<h2>' + idea.text + " " + "<img src= " + idea.image + ">" + " " + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class = 'likes' >" + idea.likes + "</div>" + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
+    var ideaElement = $('<h2>' + " " + "<div class = 'image'>" + "<img src= " + idea.image + ">" + "</div>" + " " + "<div class='text'>" + idea.text + "</div>" + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class = 'likes' >" + idea.likes + "</div>" + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
     $(".idea-box").append(ideaElement);
     ideaElement.delegate(".likeButton", "click", function(e) {
       e.preventDefault();
