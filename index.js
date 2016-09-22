@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+
 //make an empty list of ideas
 var posts = [];
 var idea = {};
@@ -22,6 +23,9 @@ idea.image = "http://www.catbehaviorassociates.com/wp-content/uploads/2012/03/ca
 idea.time = time;
 idea.id = 15001;
 posts.push(idea);
+idea.likes = 0;
+
+
 
 //let a client GET the list of ideas
 var sendIdeasList = function (request, response) {
@@ -37,6 +41,7 @@ var saveNewIdea = function (request, response) {
   idea.text = request.body.idea;
   idea.author = request.body.author;
   idea.time = new Date();
+  idea.likes = 0;
   if (request.body.image === "" ) {
     idea.image = "https://trevorslee.files.wordpress.com/2015/03/montoya-meme.jpg"
   }
@@ -50,7 +55,28 @@ var saveNewIdea = function (request, response) {
   var dbPosts = database.collection('posts');
   dbPosts.insert(idea);
 }
+
 app.post('/ideas', saveNewIdea);
+
+app.post("/liked", function (req, res) {
+   var searchId = req.body.postId;
+   console.log(searchId);
+
+var results = posts.filter(function (post) { return post.id == searchId; });
+   if (results.length > 0) {
+     if (results[0].likes === undefined){
+       results[0].likes = 0;
+     }
+     results[0].likes = results[0].likes + 1;
+     res.send(results[0]);
+
+     var databasePosts = database.collection("posts");
+     databasePosts.update({id:results[0].id}, results[0]);
+
+   }
+   else res.send(" ")
+
+});
 
 app.get('/idea', function (req, res) {
    var searchId = req.query.id;
@@ -62,6 +88,8 @@ app.get('/idea', function (req, res) {
    res.send(null);
    }
 });
+
+
 
 var mongodb = require('mongodb');
 var uri = 'mongodb://girlcodecat:camel@ds019746.mlab.com:19746/newdeployment';

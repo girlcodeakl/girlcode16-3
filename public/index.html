@@ -41,13 +41,22 @@
   <script>
   //Hello! This is the start of the JavaScript.
   var displayIdea = function(idea) {
-    var ideaElement = $('<h2>' + " " + "<div class = 'image'>" + "<img src= " + idea.image + ">" + "</div>" + " " + "<div class='text'>" + idea.text + "</div>" + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
+    var ideaElement = $('<h2>' + " " + "<div class = 'image'>" + "<img src= " + idea.image + ">" + "</div>" + " " + "<div class='text'>" + idea.text + "</div>" + "<span class = 'displayauthor'>"+ idea.author + "</span>" +"<div class='time'>" + $.format.prettyDate(idea.time) + "</div>" + '<a href="#" class="likeButton">Like</a>' + "<div class = 'likes' >" + idea.likes + "</div>" + "<div class='postId'>" + idea.id + "</div>"+ "</h2>");
     $(".idea-box").append(ideaElement);
-    ideaElement.delegate(".likeButton", "click", function() {
-      alert("You liked this post: " + idea.text + "!");
+    ideaElement.delegate(".likeButton", "click", function(e) {
+      e.preventDefault();
+      //alert(idea.id);
+      var data = {};
+        data.postId = idea.id;
+        var updateIdea = function(idea) {
+          ideaElement.find(".likes").text(idea.likes);
+          console.log(ideaElement);
+          console.log(ideaElement.find(".likes"));
+}
+        $.post("/liked", data, updateIdea);
+
     });
   }
-
 
   var createFeed = function(data) {
     data.forEach(displayIdea);
