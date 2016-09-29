@@ -51,6 +51,7 @@
         var updateIdea = function(idea) {
           ideaElement.find(".likes").text(idea.likes);
           console.log(ideaElement);
+
           console.log(ideaElement.find(".likes"));
 }
         $.post("/liked", data, updateIdea);
@@ -59,6 +60,7 @@
   }
 
   var createFeed = function(data) {
+    data.reverse();
     data.forEach(displayIdea);
   }
 
