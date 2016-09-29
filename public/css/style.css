@@ -5,6 +5,7 @@ body {
 .idea-box {
   background-color: #31152B;
   padding: 20px;
+
 }
 h1 {
   text-align: center;
@@ -107,4 +108,9 @@ input[type=text] {
 .note {
   color: #CC4452;
   font-family: 'Raleway', sans-serif;
+}
+
+img{
+  max-height: 400px;
+  max-width: 400px;
 }
